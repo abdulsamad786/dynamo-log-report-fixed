@@ -1,9 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "Verifier started at $(date)" > /app/verifier/debug.txt
+echo "Verifier started" > /app/verifier/debug.txt
 
-pytest /app/tests/test_outputs.py --json-ctrf=/app/logs/verifier/ctrf.json -rA
+pytest /tests/test_outputs.py --json-ctrf=/app/logs/verifier/ctrf.json -rA
 
 if [ $? -eq 0 ]; then
   echo 1 > /app/verifier/reward.txt
